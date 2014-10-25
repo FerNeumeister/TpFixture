@@ -1,0 +1,20 @@
+1   1157     315    River Plate
+2	 736     412    Lanús
+3	 947     842    Independiente
+4	 631     526    At. de Rafaela
+5	 631     578    N.O. Boys
+6	 736     578    Estudiantes L.P.
+7	 789     789    Racing Club
+8	 578     526    Vélez Sarsfield
+9	 526     631    Boca Juniors
+10	 684     421    Tigre
+11	 473     473    Gimnasia y Esgrima L.P.
+12	 736     842    Rosario Central
+13	 631     736    San Lorenzo de Almagro
+14	 578     736    Arsenal F.C.
+15	 578     631    Banfield
+16	 736    1000    Defensa y Justicia
+17	 578     789    Belgrano
+18	 526     842    Godoy Cruz (Mza.)
+19	 315     578    Olimpo (B. Blanca)
+20	 631     947    Quilmes A.C.

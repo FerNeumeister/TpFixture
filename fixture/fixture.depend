@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1414245796 source:c:\users\cerebro\desktop\c++\fixture\main.cpp
+	<iostream>
+	<cstdlib>
+	<ctime>
+
+1414242820 source:c:\users\cerebro\desktop\c++\torneo.cpp
+	"torneo.h"
+	<cstdlib>
+	<math.h>
+	<string.h>
+
+1414252115 c:\users\cerebro\desktop\c++\torneo.h
+	<stdio.h>
+
