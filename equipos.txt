@@ -1,4 +1,4 @@
-﻿1        1157    315    River Plate
+1   1157     315    River Plate
 2	 736     412    Lanús
 3	 947     842    Independiente
 4	 631     526    At. de Rafaela
