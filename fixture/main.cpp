@@ -1,9 +1,56 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <stdio.h>
+#include "../torneo.h"
+#include <cstring>
+
 using namespace std;
 
 int Numeroseleccionado;
+
+void GuardarEquipos(){
+
+    FILE *pEquipo;
+    pEquipo = fopen ("../equipos.txt", "r");
+
+    if(pEquipo==NULL){
+
+        cout << "Error al intentar abrir archivo"<< endl;
+
+        exit(1);
+    }
+
+    typedef struct{
+        char nombre [31];
+        int paramA;
+        int paramB;
+    } Equipo;
+
+
+    // tipo verctor enteros
+    typedef struct{
+        Equipo equipos[100];
+
+    }Equipos;
+
+    Equipo equipo;
+    Equipos equipos;
+
+    int n=0;
+
+    while (leerEquipo(pEquipo,equipo.nombre,equipo.paramA,equipo.paramB)){
+
+        equipos.equipos[n].paramA=equipo.paramA;
+        equipos.equipos[n].paramB=equipo.paramB;
+        strcpy(equipos.equipos[n].nombre,equipo.nombre);
+        n++;
+
+    }
+
+    fclose(pEquipo);
+}
+
 
 void GenerarInterfaz (){
 
@@ -21,7 +68,12 @@ void GenerarInterfaz (){
 }
 
 void GenerarFixture(){
- cout << "Generando fixture"<< endl;
+
+
+
+
+
+
 
 }
 
@@ -49,6 +101,8 @@ void SeleccionDeOpcion(int Numeroseleccionado){
 int main()
 {
     srand (time(NULL));
+
+    GuardarEquipos();
 
     GenerarInterfaz();
 
