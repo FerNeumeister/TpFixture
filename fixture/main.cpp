@@ -167,7 +167,9 @@ void SimularPartido(Equipos equipos, Fixture fixture){
 
                 simularPartido(local.paramA,local.paramB,visitante.paramA,visitante.paramB,golesLocal,golesVisitante);
 
-                cout<< golesLocal <<"-" << golesVisitante<< endl;
+                cout<< local.nombre<< golesLocal <<"-" <<visitante.nombre<< golesVisitante<< endl;
+
+
                 if (golesLocal==golesVisitante){
                     local.puntos++;
                     visitante.puntos++;
@@ -191,7 +193,7 @@ void SimularPartido(Equipos equipos, Fixture fixture){
 
 void VerEquipo(Equipos equipos, Fixture fixture){
 
-    int numeroDeEquipo=NULL;
+    int numeroDeEquipo=0;
 
     cout<< "Ingrese un equipo: "<< endl;
     cin>> numeroDeEquipo;
