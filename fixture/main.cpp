@@ -21,7 +21,7 @@ typedef struct{   // La estructura "Tipo Partido"
 typedef struct{  // La estructura "Tipo Fecha"
     Partido partidos[MAX_PARTIDOS];
     int cantidadPartidos;
-    bool laFechaFueJugada;
+    bool laFechaFueJugada=false;
 
 }Fecha;
 
@@ -102,7 +102,7 @@ void GenerarFixture(const Equipos &equipos, Fixture &fixture){
         fixture.cantidadFechas=equipos.n;
     }
 
-    for (int i=0;i<fixture.cantidadFechas;i++){
+    for (int i=1;i<fixture.cantidadFechas;i++){
 
         Fecha &fecha = fixture.fechas[i];
 
@@ -121,58 +121,57 @@ void GenerarFixture(const Equipos &equipos, Fixture &fixture){
 }
 
 
-void SimularPartido(Equipo equipos, Fixture fixture){
+void SimularPartido(Equipos equipos, Fixture fixture){
 
 int i=0;
 int j=0;
-int x=0;
-char continuar=a;
+int m=0;
+char continuar='a';
+int golesLocal=0;
+int golesVisitante=0;
+
 
 
 cout << "Ingrese una fecha: "<< endl;
 
-cin >> fixture.fechas[j];
+cin >> j;
 
-if (fixture.fechas[j].laFechaFueJugada=True){
+if (fixture.fechas[j].laFechaFueJugada==true){
 
-        cout<< "La fecha"<< j << "ya fue simulada. ¿Continuar? S/N" endl;
+        cout<< "La fecha"<< j << "ya fue simulada. ¿Continuar? S/N"<< endl;
         cin>> continuar;
 
-        if(continuar==S||s){
+        if(continuar=='S'){
 
-            cout<< "estamos Simulando viejitaaa"<< ;
+            cout << "estamos Simulando nuevamente"<< endl;
         }
         else{
             exit (1);
         }
 }
-else{
+else {
 
+    for (int m=1;m<=j;m++){
 
-    for(x;x<j+1;x++){
+        Fecha &fecha = fixture.fechas[m];
+        fecha.cantidadPartidos=equipos.n/2;
+        cout<< "simulando fecha"<< m << endl;
 
-        for(i;i<equipos.n/2;i++){
+        for (int i=1;i<=fecha.cantidadPartidos;i++){
 
-            simularPartido(equipos[i].paramA,equipos[i].paramB,equipos[i+1].paramA,equipos[i+1].paramB)
+            Partido &partido = fecha.partidos[i];
+            cout << "simulando partido"<< i << endl;
 
-            if (goleslocal==golesVisitante){
+            Equipo &local=equipos.equipos[partido.local];
+            Equipo &visitante=equipos.equipos[partido.visitante];
 
-                    equipos[i].puntos+1;
-                    equipos[i+1].puntos+1;
-            }
-            if (goleslocal>golesVisitante){
+            simularPartido(local.paramA,local.paramB,visitante.paramA,visitante.paramB,golesLocal,golesVisitante);
 
-                    equipos[i].puntos+3
-
-            }
-            else{
-                    equipos[i+1].puntos+3
-            }
         }
-
-        fixture.fechas[j].laFechaFueJugada=true
     }
 
+
+
 }
 
 
@@ -180,49 +179,27 @@ else{
 
 
 
-//for (i;i<equipos.n/2;i){
-
-  //  simularPartido(equipos.equipos[i].paramA,equipos.equipos[i].paramB,equipos.equipos[i++].paramA,equipos.equipos[i++].paramB,);
-
 }
 
 
-void SeleccionDeOpcion(int Numeroseleccionado,const Equipos &equipos, Fixture &fixture){
+void SeleccionDeOpcion(int Numeroseleccionado, Equipos equipos, Fixture &fixture){
 
     if(Numeroseleccionado==1){
 
-    GenerarFixture(equipos,fixture);
+        GenerarFixture(equipos,fixture);
 }
     else {
-        if (Numeroseleccionado==2){
 
-            SimularPartido(equipos, fixture)
+        SimularPartido(equipos,fixture);
+
 
 
         }
     }
-    }
 
 
-void InicializarSimulacion (Fixture fixture){
-    int p;
-
-    for (p=0;p<MAX_FECHAS;p++){
-
-        fixture.fechas[p].laFechaFueJugada=false;
-    }
 
 
-}
-
-void InicializarPuntos (Equipo equipos){
-    int p;
-
-    for (p=0;p<MAX_EQUIPOS;p++){
-
-       equipos[p].puntos=0;
-    }
-}
 
 
 int main()
@@ -235,10 +212,6 @@ int main()
     GuardarEquipos(equipos);
 
     GenerarInterfaz();
-
-    InicializarPuntos(equipos)
-
-    InicializarSimulacion(fixture);
 
     SeleccionDeOpcion(Numeroseleccionado,equipos,fixture);
 
