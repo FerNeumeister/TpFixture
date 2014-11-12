@@ -11,7 +11,7 @@
 
 using namespace std;
 
-int Numeroseleccionado;
+int numeroseleccionado;
 
 typedef struct{   // La estructura "Tipo Partido"
     int local;
@@ -87,7 +87,7 @@ void GenerarInterfaz (){
     cout << "7. Salir"<< endl;
     cout << "Elija una opcion:"<< endl;
 
-    cin >> Numeroseleccionado;
+    cin >> numeroseleccionado;
 
 }
 
@@ -117,26 +117,25 @@ void GenerarFixture(const Equipos &equipos, Fixture &fixture){
         }
     }
 
-
 }
 
 
 void SimularPartido(Equipos equipos, Fixture fixture){
 
-int i=0;
-int j=0;
-int m=0;
-char continuar='a';
-int golesLocal=0;
-int golesVisitante=0;
+    int i=0;
+    int j=0;
+    int m=0;
+    char continuar='a';
+    int golesLocal=0;
+    int golesVisitante=0;
 
 
 
-cout << "Ingrese una fecha: "<< endl;
+    cout << "Ingrese una fecha: "<< endl;
 
-cin >> j;
+    cin >> j;
 
-if (fixture.fechas[j].laFechaFueJugada==true){
+    if (fixture.fechas[j].laFechaFueJugada==true){
 
         cout<< "La fecha"<< j << "ya fue simulada. ¿Continuar? S/N"<< endl;
         cin>> continuar;
@@ -149,72 +148,76 @@ if (fixture.fechas[j].laFechaFueJugada==true){
             exit (1);
         }
 }
-else {
+    else {
 
-    for (int m=1;m<=j;m++){
+        for (int m=1;m<=j;m++){
 
-        Fecha &fecha = fixture.fechas[m];
-        fecha.cantidadPartidos=equipos.n/2;
-        cout<< "\n" << "SIMULANDO FECHA  "<< m << "\n"<< endl;
+            Fecha &fecha = fixture.fechas[m];
+            fecha.cantidadPartidos=equipos.n/2;
+            cout<< "\n" << "SIMULANDO FECHA  "<< m << "\n"<< endl;
+            fixture.fechas[m].laFechaFueJugada=true;
 
-        for (int i=1;i<=fecha.cantidadPartidos;i++){
+            for (int i=1;i<=fecha.cantidadPartidos;i++){
 
-            Partido &partido = fecha.partidos[i];
-            cout << "PARTIDO  "<< i << endl;
+                Partido &partido = fecha.partidos[i];
+                cout << "PARTIDO  "<< i << endl;
 
-            Equipo &local=equipos.equipos[partido.local];
-            Equipo &visitante=equipos.equipos[partido.visitante];
+                Equipo &local=equipos.equipos[partido.local];
+                Equipo &visitante=equipos.equipos[partido.visitante];
 
-            simularPartido(local.paramA,local.paramB,visitante.paramA,visitante.paramB,golesLocal,golesVisitante);
+                simularPartido(local.paramA,local.paramB,visitante.paramA,visitante.paramB,golesLocal,golesVisitante);
 
-            if (golesLocal==golesVisitante){
+                cout<< golesLocal <<"-" << golesVisitante<< endl;
+                if (golesLocal==golesVisitante){
                     local.puntos++;
                     visitante.puntos++;
-
-            }
-            else{
-                if(golesLocal<golesVisitante){
-                    visitante.puntos+3;
                 }
                 else{
-                    local.puntos+3;
+                    if(golesLocal<golesVisitante){
+                        visitante.puntos+3;
+                }
+                    else{
+                        local.puntos+3;
                 }
             }
-
         }
     }
-
-
-
 }
 
-cout<<"\n"<< "SIMULACION TERMINADA "<< endl;
-
-
-
+    cout<<"\n"<< "SIMULACION TERMINADA "<< endl;
 
 }
 
 
-void SeleccionDeOpcion(int Numeroseleccionado, Equipos equipos, Fixture &fixture){
+void VerEquipo(Equipos equipos, Fixture fixture){
 
-    if(Numeroseleccionado==1){
+    int numeroDeEquipo=NULL;
 
+    cout<< "Ingrese un equipo: "<< endl;
+    cin>> numeroDeEquipo;
+
+
+}
+
+
+
+void SeleccionDeOpcion(int numeroseleccionado, Equipos equipos, Fixture &fixture){
+
+    if(numeroseleccionado==1){
         GenerarFixture(equipos,fixture);
 }
     else {
+            if (numeroseleccionado==2){
+                SimularPartido(equipos,fixture);
+            }
+            else{
+                if (numeroseleccionado==3);
 
-        SimularPartido(equipos,fixture);
-
+            }
 
 
         }
     }
-
-
-
-
-
 
 int main()
 {
@@ -227,7 +230,7 @@ int main()
 
     GenerarInterfaz();
 
-    SeleccionDeOpcion(Numeroseleccionado,equipos,fixture);
+    SeleccionDeOpcion(numeroseleccionado,equipos,fixture);
 
 
     return 0;

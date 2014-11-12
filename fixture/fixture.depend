@@ -16,7 +16,7 @@
 1414252115 c:\users\cerebro\desktop\c++\torneo.h
 	<stdio.h>
 
-1415745411 source:c:\users\fer\documents\github\tpfixture\torneo.cpp
+1415824150 source:c:\users\fer\documents\github\tpfixture\torneo.cpp
 	"torneo.h"
 	<cstdlib>
 	<math.h>
@@ -25,7 +25,7 @@
 1415745411 c:\users\fer\documents\github\tpfixture\torneo.h
 	<stdio.h>
 
-1415821093 source:c:\users\fer\documents\github\tpfixture\fixture\main.cpp
+1415824150 source:c:\users\fer\documents\github\tpfixture\fixture\main.cpp
 	<iostream>
 	<cstdlib>
 	<ctime>
