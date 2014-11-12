@@ -155,17 +155,31 @@ else {
 
         Fecha &fecha = fixture.fechas[m];
         fecha.cantidadPartidos=equipos.n/2;
-        cout<< "simulando fecha"<< m << endl;
+        cout<< "\n" << "SIMULANDO FECHA  "<< m << "\n"<< endl;
 
         for (int i=1;i<=fecha.cantidadPartidos;i++){
 
             Partido &partido = fecha.partidos[i];
-            cout << "simulando partido"<< i << endl;
+            cout << "PARTIDO  "<< i << endl;
 
             Equipo &local=equipos.equipos[partido.local];
             Equipo &visitante=equipos.equipos[partido.visitante];
 
             simularPartido(local.paramA,local.paramB,visitante.paramA,visitante.paramB,golesLocal,golesVisitante);
+
+            if (golesLocal==golesVisitante){
+                    local.puntos++;
+                    visitante.puntos++;
+
+            }
+            else{
+                if(golesLocal<golesVisitante){
+                    visitante.puntos+3;
+                }
+                else{
+                    local.puntos+3;
+                }
+            }
 
         }
     }
@@ -174,7 +188,7 @@ else {
 
 }
 
-
+cout<<"\n"<< "SIMULACION TERMINADA "<< endl;
 
 
 
