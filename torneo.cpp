@@ -10,6 +10,7 @@
 #include <cstdlib>
 #include <math.h>
 #include <string.h>
+#include <time.h>
 
 #define BUFFER_SIZE 1024
 
@@ -54,7 +55,7 @@ void generarPartido(int equipos, int fecha, int partido, int &local, int &visita
 
 int generarNumeroAleatorio()
 {
-    return rand();
+    return rand()%2;
     //return .5;
 }
 

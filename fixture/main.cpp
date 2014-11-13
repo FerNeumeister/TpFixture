@@ -102,32 +102,33 @@ void GenerarFixture(const Equipos &equipos, Fixture &fixture){
         fixture.cantidadFechas=equipos.n;
     }
 
-    for (int i=1;i<fixture.cantidadFechas;i++){
+    for (int i=0;i<=fixture.cantidadFechas;i++){
 
         Fecha &fecha = fixture.fechas[i];
 
-        cout << "Fecha: " << i << endl;
+        cout << "Fecha: " << i+1 << endl;
 
         fecha.cantidadPartidos=equipos.n/2;
         for(int j=0;j<fecha.cantidadPartidos;j++){
 
             Partido &partido = fecha.partidos[j];
             generarPartido(equipos.n,i+1,j+1,partido.local,partido.visitante);
-            cout <<"Partido: "<< j <<" " << equipos.equipos[partido.local].nombre << "-" << equipos.equipos[partido.visitante].nombre<< endl;
+            cout <<"Partido: "<< j+1 <<" " << equipos.equipos[partido.local].nombre << "-" << equipos.equipos[partido.visitante].nombre<< endl;
+
         }
     }
 
 }
 
 
-void SimularPartido(Equipos equipos, Fixture fixture){
+void SimularPartido(Equipos &equipos, Fixture &fixture){
 
     int i=0;
     int j=0;
     int m=0;
     char continuar='a';
-    int golesLocal=0;
-    int golesVisitante=0;
+    int golesLocal;
+    int golesVisitante;
 
 
 
@@ -140,13 +141,11 @@ void SimularPartido(Equipos equipos, Fixture fixture){
         cout<< "La fecha"<< j << "ya fue simulada. ¿Continuar? S/N"<< endl;
         cin>> continuar;
 
-        if(continuar=='S'){
+        if((continuar=='S')||(continuar=='s')){
 
             cout << "estamos Simulando nuevamente"<< endl;
         }
-        else{
-            exit (1);
-        }
+
 }
     else {
 
@@ -155,31 +154,31 @@ void SimularPartido(Equipos equipos, Fixture fixture){
             Fecha &fecha = fixture.fechas[m];
             fecha.cantidadPartidos=equipos.n/2;
             cout<< "\n" << "SIMULANDO FECHA  "<< m << "\n"<< endl;
-            fixture.fechas[m].laFechaFueJugada=true;
+            fecha.laFechaFueJugada=true;
 
             for (int i=1;i<=fecha.cantidadPartidos;i++){
 
                 Partido &partido = fecha.partidos[i];
                 cout << "PARTIDO  "<< i << endl;
 
-                Equipo &local=equipos.equipos[partido.local];
-                Equipo &visitante=equipos.equipos[partido.visitante];
+                Equipo &Local=equipos.equipos[partido.local];
+                Equipo &Visitante=equipos.equipos[partido.visitante];
 
-                simularPartido(local.paramA,local.paramB,visitante.paramA,visitante.paramB,golesLocal,golesVisitante);
+                simularPartido(Local.paramA,Local.paramB,Visitante.paramA,Visitante.paramB,golesLocal,golesVisitante);
 
-                cout<< local.nombre<< golesLocal <<"-" <<visitante.nombre<< golesVisitante<< endl;
+                cout<< equipos.equipos[partido.local].nombre <<" "<<golesLocal<<"-"<<" "<< golesVisitante <<equipos.equipos[partido.visitante].nombre<< endl;
 
 
                 if (golesLocal==golesVisitante){
-                    local.puntos++;
-                    visitante.puntos++;
+                    Local.puntos++;
+                    Visitante.puntos++;
                 }
                 else{
                     if(golesLocal<golesVisitante){
-                        visitante.puntos+3;
+                        Visitante.puntos+3;
                 }
                     else{
-                        local.puntos+3;
+                        Local.puntos+3;
                 }
             }
         }
@@ -195,8 +194,14 @@ void VerEquipo(Equipos equipos, Fixture fixture){
 
     int numeroDeEquipo=0;
 
-    cout<< "Ingrese un equipo: "<< endl;
+    cout<< "Elija un equipo: "<< endl;
+
+    for (int i=0;i<equipos.n;i++){
+        cout<<i+1<<":"<< equipos.equipos[i].nombre<< endl;
+    }
     cin>> numeroDeEquipo;
+
+
 
 
 }
@@ -205,21 +210,37 @@ void VerEquipo(Equipos equipos, Fixture fixture){
 
 void SeleccionDeOpcion(int numeroseleccionado, Equipos equipos, Fixture &fixture){
 
-    if(numeroseleccionado==1){
+    while (numeroseleccionado!=7){
+    if (numeroseleccionado==1){
         GenerarFixture(equipos,fixture);
-}
-    else {
-            if (numeroseleccionado==2){
-                SimularPartido(equipos,fixture);
-            }
-            else{
-                if (numeroseleccionado==3);
-
-            }
-
-
+        cout <<"Elija una opcion: "<< endl;
         }
+    if (numeroseleccionado==2){
+        SimularPartido(equipos,fixture);
+        cout <<"Elija una opcion: "<< endl;
+        }
+    if (numeroseleccionado==3){
+        VerEquipo(equipos,fixture);
+        cout <<"Elija una opcion: "<< endl;
+        }
+    if(numeroseleccionado==4){
+        //Vertabladeposiciones();
+        cout <<"Elija una opcion: "<< endl;
+        }
+    if(numeroseleccionado==5){
+        //GuardarFixture();
+        cout <<"Elija una opcion: "<< endl;
+        }
+    if(numeroseleccionado==6){
+        //CargarFixture();
+        cout <<"Elija una opcion: "<< endl;
+        }
+        cin>>numeroseleccionado;
+    if(numeroseleccionado==7){}
     }
+}
+
+
 
 int main()
 {
@@ -233,6 +254,7 @@ int main()
     GenerarInterfaz();
 
     SeleccionDeOpcion(numeroseleccionado,equipos,fixture);
+
 
 
     return 0;
