@@ -16,6 +16,8 @@ int numeroseleccionado;
 typedef struct{   // La estructura "Tipo Partido"
     int local;
     int visitante;
+    int golesLocal;
+    int golesVisitante;
 }Partido;
 
 typedef struct{  // La estructura "Tipo Fecha"
@@ -28,6 +30,7 @@ typedef struct{  // La estructura "Tipo Fecha"
 typedef struct {  // Estructura de "Tipo Fixture"
     Fecha fechas [MAX_FECHAS];
     int cantidadFechas;
+    bool fixtureGenerado=false;
 
 }Fixture;
 
@@ -94,6 +97,14 @@ void GenerarInterfaz (){
 
 void GenerarFixture(const Equipos &equipos, Fixture &fixture){
 
+    char generarotravez='a';
+
+    if (fixture.fixtureGenerado==true){
+
+        cout<< "Fixture ya generado. ¿Generar otra vez?-S/N"<< endl;
+        cin>>generarotravez;
+        if((generarotravez=='s')||(generarotravez=='S')){
+
 
     if((equipos.n%2)==0){
         fixture.cantidadFechas=equipos.n-1;
@@ -115,9 +126,37 @@ void GenerarFixture(const Equipos &equipos, Fixture &fixture){
             generarPartido(equipos.n,i+1,j+1,partido.local,partido.visitante);
             cout <<"Partido: "<< j+1 <<" " << equipos.equipos[partido.local].nombre << "-" << equipos.equipos[partido.visitante].nombre<< endl;
 
+            }
         }
+            }
+    else {
+        return;
+    }
+        fixture.fixtureGenerado=true;
+        }
+        if((equipos.n%2)==0){
+        fixture.cantidadFechas=equipos.n-1;
+    }
+    else{
+        fixture.cantidadFechas=equipos.n;
     }
 
+    for (int i=0;i<=fixture.cantidadFechas;i++){
+
+        Fecha &fecha = fixture.fechas[i];
+
+        cout << "Fecha: " << i+1 << endl;
+
+        fecha.cantidadPartidos=equipos.n/2;
+        for(int j=0;j<fecha.cantidadPartidos;j++){
+
+            Partido &partido = fecha.partidos[j];
+            generarPartido(equipos.n,i+1,j+1,partido.local,partido.visitante);
+            cout <<"Partido: "<< j+1 <<" " << equipos.equipos[partido.local].nombre << "-" << equipos.equipos[partido.visitante].nombre<< endl;
+
+            }
+        }
+        fixture.fixtureGenerado=true;
 }
 
 
@@ -130,11 +169,14 @@ void SimularPartido(Equipos &equipos, Fixture &fixture){
     int golesLocal;
     int golesVisitante;
 
-
-
+    if (fixture.fixtureGenerado==false){
+        cout<<"No hay partidos para simular."<<"\n"<<"Por favor, genere un fixture primero."<< endl;
+        return;
+    }
     cout << "Ingrese una fecha: "<< endl;
 
     cin >> j;
+
 
     if (fixture.fechas[j].laFechaFueJugada==true){
 
@@ -143,20 +185,19 @@ void SimularPartido(Equipos &equipos, Fixture &fixture){
 
         if((continuar=='S')||(continuar=='s')){
 
-            cout << "estamos Simulando nuevamente"<< endl;
+            cout << "estamos Simulando nuevamente"<< endl; //
         }
-
 }
     else {
 
-        for (int m=1;m<=j;m++){
+        for (int m=0;m<=j;m++){
 
+            fixture.fechas[m].laFechaFueJugada=true;
             Fecha &fecha = fixture.fechas[m];
             fecha.cantidadPartidos=equipos.n/2;
             cout<< "\n" << "SIMULANDO FECHA  "<< m << "\n"<< endl;
-            fecha.laFechaFueJugada=true;
 
-            for (int i=1;i<=fecha.cantidadPartidos;i++){
+            for (int i=0;i<=fecha.cantidadPartidos;i++){
 
                 Partido &partido = fecha.partidos[i];
                 cout << "PARTIDO  "<< i << endl;
@@ -168,6 +209,8 @@ void SimularPartido(Equipos &equipos, Fixture &fixture){
 
                 cout<< equipos.equipos[partido.local].nombre <<" "<<golesLocal<<"-"<<" "<< golesVisitante <<equipos.equipos[partido.visitante].nombre<< endl;
 
+                partido.golesLocal=golesLocal;
+                partido.golesVisitante=golesVisitante;
 
                 if (golesLocal==golesVisitante){
                     Local.puntos++;
@@ -184,27 +227,62 @@ void SimularPartido(Equipos &equipos, Fixture &fixture){
         }
     }
 }
-
     cout<<"\n"<< "SIMULACION TERMINADA "<< endl;
 
 }
 
 
-void VerEquipo(Equipos equipos, Fixture fixture){
+void VerEquipo(Equipos &equipos, Fixture &fixture){
 
     int numeroDeEquipo=0;
 
     cout<< "Elija un equipo: "<< endl;
-
-    for (int i=0;i<equipos.n;i++){
-        cout<<i+1<<":"<< equipos.equipos[i].nombre<< endl;
-    }
     cin>> numeroDeEquipo;
+    cout<<"Partidos de -"<<equipos.equipos[numeroDeEquipo-1].nombre<< endl;
+
+    for (int j=1;j<fixture.cantidadFechas;j++){
+        if(fixture.fechas[j].laFechaFueJugada==true){
+
+            Fecha  &fecha=fixture.fechas[j];
+            Equipo &Elegido=equipos.equipos[numeroDeEquipo];
+
+
+              for (int i=0;i<=fecha.cantidadPartidos;i++){
+
+                Partido &partido = fecha.partidos[i];
+                Equipo &Local=equipos.equipos[fecha.partidos[i].local];
+                Equipo &Visitante=equipos.equipos[fecha.partidos[i].visitante];
+
+                if((Elegido.nombre==Local.nombre)&&(Elegido.nombre==Visitante.nombre)){ //Problema a Resolver
+
+                    cout<<Local.nombre<<" "<<partido.golesLocal<<"-"<<partido.golesVisitante<<" "<<Visitante.nombre<< endl;
+
+                }
+            }
+        }
+    }
+    return;
+}
+
+
+
+void Vertabladeposiciones(){
 
 
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -224,7 +302,7 @@ void SeleccionDeOpcion(int numeroseleccionado, Equipos equipos, Fixture &fixture
         cout <<"Elija una opcion: "<< endl;
         }
     if(numeroseleccionado==4){
-        //Vertabladeposiciones();
+        Vertabladeposiciones();
         cout <<"Elija una opcion: "<< endl;
         }
     if(numeroseleccionado==5){
