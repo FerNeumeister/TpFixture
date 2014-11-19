@@ -324,54 +324,34 @@ void VerEquipo(Equipos &equipos, Fixture &fixture){
 
 
 
-void Vertabladeposiciones(Equipos equipos, Fixture fixture){
-
+void Vertabladeposiciones(Equipos equipos, Fixture &fixture){
+    int aux=0;
     int j=0;
-    int x=0;
     int l=0;
+    int x=0;
 
-    int maxPuntos=equipos.equipos[0].puntos;
+    Equipo Ordenados[equipos.n];
 
-    Equipo equiposOrdenados[equipos.n];
-    equiposOrdenados[x].puntos=equipos.equipos[0].puntos;
+    for(int x=1;x<equipos.n;x++){
 
-    for(int h=0;h<equipos.n;h++){
-
-        equiposOrdenados[h].puntos=0;
+        Ordenados[x].puntos=0;
+        cout<< Ordenados[x].puntos<< endl;
     }
 
-    cout<< "Ingrese una fecha: "<< endl;
-    cin>> j;
+    Equipo &Equipos=equipos.equipos[l];
+        for (int j;j<equipos.n;j++){
+        for (int l;l<equipos.n;l++){
 
-    for (int h=0;h<equipos.n;h++){
+            if(Ordenados[j].puntos<Equipos.puntos){
 
-        for (int i=0;i<equipos.n;i++){
-
-            if (equipos.equipos[i].puntos>equiposOrdenados[h].puntos){
-
-                equiposOrdenados[h].puntos=equipos.equipos[i].puntos;
-                cout<< equiposOrdenados[h].puntos<< endl;
+                Ordenados[j].puntos=Equipos.puntos;
 
             }
-
-
+        }
+        }
+    for (int k=0;k<20;k++){
+        cout<< Ordenados[k].puntos<< endl;
     }
-    }
-
-    for (int l;l<equipos.n;l++){
-    cout<< "-" << equiposOrdenados[l].puntos<< endl;
-
-
-    }
-    }
-
-
-
-
-void insertarOrdenado(Equipo equipos, Equipo &equiposOrdenados){
-
-
-
 }
 
 
