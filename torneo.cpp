@@ -11,6 +11,7 @@
 #include <math.h>
 #include <string.h>
 #include <time.h>
+#include <ctime>
 
 #define BUFFER_SIZE 1024
 

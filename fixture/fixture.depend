@@ -16,17 +16,18 @@
 1414252115 c:\users\cerebro\desktop\c++\torneo.h
 	<stdio.h>
 
-1415839399 source:c:\users\fer\documents\github\tpfixture\torneo.cpp
+1416379337 source:c:\users\fer\documents\github\tpfixture\torneo.cpp
 	"torneo.h"
 	<cstdlib>
 	<math.h>
 	<string.h>
 	<time.h>
+	<ctime>
 
 1415828985 c:\users\fer\documents\github\tpfixture\torneo.h
 	<stdio.h>
 
-1416371288 source:c:\users\fer\documents\github\tpfixture\fixture\main.cpp
+1416429063 source:c:\users\fer\documents\github\tpfixture\fixture\main.cpp
 	<iostream>
 	<cstdlib>
 	<ctime>
