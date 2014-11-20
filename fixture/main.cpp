@@ -395,24 +395,22 @@ void Vertabladeposiciones(Equipos equipos, Fixture &fixture){
 
     //Equipo &Equipos=equipos.equipos[j];
 
-        for (int i=0;i<equipos.n;i++){
-
-            Equipo &Equipos=equipos.equipos[j];
-
         for (int j=0;j<equipos.n;j++){
 
+        for (int i=0;i<equipos.n;i++){
 
-                if(Ordenados[i].puntos<=equipos.equipos[j].puntos){
 
-                Ordenados[i].puntos=equipos.equipos[j].puntos;
-                strcpy(Ordenados[i].nombre,equipos.equipos[j].nombre);
-                Ordenados[i].partidosJugados=equipos.equipos[j].partidosJugados;
-                Ordenados[i].partidosGanados=equipos.equipos[j].partidosGanados;
-                Ordenados[i].partidosEmpatados=equipos.equipos[j].partidosEmpatados;
-                Ordenados[i].partidosPerdidos=equipos.equipos[j].partidosPerdidos;
-                Ordenados[i].golesEncontra=equipos.equipos[j].golesEncontra;
-                Ordenados[i].golesFavor=equipos.equipos[j].golesFavor;
-                Ordenados[i].diferenciaDeGoles=equipos.equipos[j].diferenciaDeGoles;
+                if((Ordenados[j].puntos<equipos.equipos[i].puntos)&&(Ordenados[j].puntos<=Ordenados[j-1].puntos)){ // Esta técnica no funciona y nose porque. Por eso
+                                                                                                                   // muestro los equipos sin ordenar.
+                Ordenados[j].puntos=equipos.equipos[i].puntos;
+                strcpy(Ordenados[j].nombre,equipos.equipos[i].nombre);
+                Ordenados[j].partidosJugados=equipos.equipos[i].partidosJugados;
+                Ordenados[j].partidosGanados=equipos.equipos[i].partidosGanados;
+                Ordenados[j].partidosEmpatados=equipos.equipos[i].partidosEmpatados;
+                Ordenados[j].partidosPerdidos=equipos.equipos[i].partidosPerdidos;
+                Ordenados[j].golesEncontra=equipos.equipos[i].golesEncontra;
+                Ordenados[j].golesFavor=equipos.equipos[i].golesFavor;
+                Ordenados[j].diferenciaDeGoles=equipos.equipos[i].diferenciaDeGoles;
                 }
 
             }
@@ -423,7 +421,8 @@ void Vertabladeposiciones(Equipos equipos, Fixture &fixture){
     cout<< "\t Equipo "<<"\t"<<"Puntos"<<" "<<"PJ"<<" "<<"PG"<<" "<<"PE"<<" "<<"PP"<<" "<<"GF"<<" "<<"GC"<<" "<<"DG"<< endl;
     for (int z=0;z<equipos.n;z++){
 
-       cout<< Ordenados[z].nombre<<"\t"<<Ordenados[z].puntos<<"\t"<<Ordenados[z].partidosJugados<<"  "<<Ordenados[z].partidosGanados<<"  "<<Ordenados[z].partidosEmpatados<<"  "<<Ordenados[z].partidosPerdidos<<"  "<<Ordenados[z].golesFavor<<"  "<<Ordenados[z].golesEncontra<<"  "<<Ordenados[z].diferenciaDeGoles<< endl;
+        cout<< equipos.equipos[z].nombre<<"\t"<<equipos.equipos[z].puntos<<"\t"<<equipos.equipos[z].partidosJugados<<"  "<<equipos.equipos[z].partidosGanados<<"  "<<equipos.equipos[z].partidosEmpatados<<"  "<<equipos.equipos[z].partidosPerdidos<<"  "<<equipos.equipos[z].golesFavor<<"  "<<equipos.equipos[z].golesEncontra<<"  "<<equipos.equipos[z].diferenciaDeGoles<< endl;
+    // cout<< Ordenados[z].nombre<<"\t"<<Ordenados[z].puntos<<"\t"<<Ordenados[z].partidosJugados<<"  "<<Ordenados[z].partidosGanados<<"  "<<Ordenados[z].partidosEmpatados<<"  "<<Ordenados[z].partidosPerdidos<<"  "<<Ordenados[z].golesFavor<<"  "<<Ordenados[z].golesEncontra<<"  "<<Ordenados[z].diferenciaDeGoles<< endl;
     }
 
     }
@@ -437,7 +436,6 @@ void GuardarFixture(Fixture &fixture,Fixtures &fixtures){
 
 int numero;
 char sobreescribir;
-int p=40;
 
 
     if(fixture.fixtureGenerado==true){
