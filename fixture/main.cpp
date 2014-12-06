@@ -62,7 +62,7 @@ typedef struct{
 
 Fixtures fixtures;
 
-void GuardarEquipos(Equipos &equipos){
+void GuardarEquipos(Equipos &equiposDefinitivo){
 
     FILE *pEquipo;
     pEquipo = fopen ("../equipos.txt", "r");
@@ -75,6 +75,7 @@ void GuardarEquipos(Equipos &equipos){
     }
 
     Equipo equipo;
+    Equipos equipos;
 
     equipos.n=0 ;
 
@@ -90,7 +91,33 @@ void GuardarEquipos(Equipos &equipos){
     }
 
     fclose(pEquipo);
-}
+
+    bool equipoOcupado[equipos.n];
+
+    for(int j=0;j<equipos.n;j++){
+        equipoOcupado[j]=false;
+    }
+
+
+    for(int i=0;i<equipos.n;i++){
+       int aleatorio;
+       bool ocupado=true;
+       while(ocupado==true){
+            aleatorio=rand()%equipos.n;
+            ocupado=equipoOcupado[aleatorio];
+
+        }
+
+        equiposDefinitivo.equipos[aleatorio]=equipos.equipos[i];
+            equipoOcupado[aleatorio]=true;
+
+        }
+    equiposDefinitivo.n=equipos.n;
+
+    }
+
+
+
 
 
 void GenerarInterfaz (){
@@ -109,7 +136,9 @@ void GenerarInterfaz (){
 }
 
 
-void GenerarFixture(const Equipos &equipos, Fixture &fixture){
+void GenerarFixture(Equipos &equipos, Fixture &fixture){
+
+    GuardarEquipos(equipos);
 
    if((equipos.n%2)==0){
         fixture.cantidadFechas=equipos.n-1;
@@ -128,8 +157,6 @@ void GenerarFixture(const Equipos &equipos, Fixture &fixture){
         for(int j=0;j<fecha.cantidadPartidos;j++){
 
             Partido &partido = fecha.partidos[j];
-
-            partido.local=rand()%equipos.n/2;
 
             generarPartido(equipos.n,i+1,j+1,partido.local,partido.visitante);
             cout <<"Partido: "<< j+1 <<" " << equipos.equipos[partido.local].nombre << "-" << equipos.equipos[partido.visitante].nombre<< endl;
@@ -531,6 +558,7 @@ int main()
 
 
     GuardarEquipos(equipos);
+
 
     GenerarInterfaz();
 

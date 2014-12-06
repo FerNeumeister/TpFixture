@@ -53,3 +53,22 @@
 	"../torneo.h"
 	<cstring>
 
+1417885358 source:c:\users\invitado\tpfixture\torneo.cpp
+	"torneo.h"
+	<cstdlib>
+	<math.h>
+	<string.h>
+	<time.h>
+	<ctime>
+
+1417885358 c:\users\invitado\tpfixture\torneo.h
+	<stdio.h>
+
+1417892611 source:c:\users\invitado\tpfixture\fixture\main.cpp
+	<iostream>
+	<cstdlib>
+	<ctime>
+	<stdio.h>
+	"../torneo.h"
+	<cstring>
+
