@@ -408,56 +408,57 @@ else{
 }
 
 
-void Vertabladeposiciones(Equipos equipos, Fixture &fixture){
+void Vertabladeposiciones(Equipos &equipos, Fixture &fixture){
     int x=0;
     int j=0;
+    bool asignado[equipos.n];
+    Equipos equiposOrden;
 
     if (fixture.fixtureGenerado==true){
-    Equipo Ordenados[equipos.n];
 
-    for(int x=1;x<equipos.n;x++){
+        Equipos equiposOrden;
 
-        Ordenados[x].puntos=0;
-    }
-
-    //Equipo &Equipos=equipos.equipos[j];
-
-        for (int j=0;j<equipos.n;j++){
-
-        for (int i=0;i<equipos.n;i++){
-
-
-                if((Ordenados[j].puntos<equipos.equipos[i].puntos)&&(Ordenados[j].puntos<=Ordenados[j-1].puntos)){ // Esta técnica no funciona y nose porque. Por eso
-                                                                                                                   // muestro los equipos sin ordenar.
-                Ordenados[j].puntos=equipos.equipos[i].puntos;
-                strcpy(Ordenados[j].nombre,equipos.equipos[i].nombre);
-                Ordenados[j].partidosJugados=equipos.equipos[i].partidosJugados;
-                Ordenados[j].partidosGanados=equipos.equipos[i].partidosGanados;
-                Ordenados[j].partidosEmpatados=equipos.equipos[i].partidosEmpatados;
-                Ordenados[j].partidosPerdidos=equipos.equipos[i].partidosPerdidos;
-                Ordenados[j].golesEncontra=equipos.equipos[i].golesEncontra;
-                Ordenados[j].golesFavor=equipos.equipos[i].golesFavor;
-                Ordenados[j].diferenciaDeGoles=equipos.equipos[i].diferenciaDeGoles;
-                }
-
-            }
+        for(int i=0;i<equipos.n;i++){
+           asignado[i]=false;
         }
 
-    cout<<"TABLA DE POSICIONES"<< endl;
 
-    cout<< "\t Equipo "<<"\t"<<"Puntos"<<" "<<"PJ"<<" "<<"PG"<<" "<<"PE"<<" "<<"PP"<<" "<<"GF"<<" "<<"GC"<<" "<<"DG"<< endl;
-    for (int z=0;z<equipos.n;z++){
+        for(int i=0;i<equipos.n;i++){
 
-        cout<< equipos.equipos[z].nombre<<"\t"<<equipos.equipos[z].puntos<<"\t"<<equipos.equipos[z].partidosJugados<<"  "<<equipos.equipos[z].partidosGanados<<"  "<<equipos.equipos[z].partidosEmpatados<<"  "<<equipos.equipos[z].partidosPerdidos<<"  "<<equipos.equipos[z].golesFavor<<"  "<<equipos.equipos[z].golesEncontra<<"  "<<equipos.equipos[z].diferenciaDeGoles<< endl;
-    // cout<< Ordenados[z].nombre<<"\t"<<Ordenados[z].puntos<<"\t"<<Ordenados[z].partidosJugados<<"  "<<Ordenados[z].partidosGanados<<"  "<<Ordenados[z].partidosEmpatados<<"  "<<Ordenados[z].partidosPerdidos<<"  "<<Ordenados[z].golesFavor<<"  "<<Ordenados[z].golesEncontra<<"  "<<Ordenados[z].diferenciaDeGoles<< endl;
+            int maximo=-1;
+            int PosMax=-1;
+
+            for(int k=0;k<equipos.n;k++){
+                if (not asignado[k]){
+
+                    if(equipos.equipos[k].puntos>=maximo){
+                        maximo=equipos.equipos[k].puntos;
+                        PosMax=k;
+                    }
+                }
+            }
+
+            asignado[PosMax]=true;
+            equiposOrden.equipos[i]=equipos.equipos[PosMax];
+        }
+
+            cout<<"TABLA DE POSICIONES"<< endl;
+
+            cout<< "\t Equipo "<<"\t"<<"Puntos"<<" "<<"PJ"<<" "<<"PG"<<" "<<"PE"<<" "<<"PP"<<" "<<"GF"<<" "<<"GC"<<" "<<"DG"<< endl;
+
+            for (int z=0;z<equipos.n;z++){
+
+            //cout<< equiposOrden.equipos[z].nombre<<"\t"<<equiposOrden.equipos[z].puntos<<"\t"<<equipos.equipos[z].partidosJugados<<"  "<<equipos.equipos[z].partidosGanados<<"  "<<equipos.equipos[z].partidosEmpatados<<"  "<<equipos.equipos[z].partidosPerdidos<<"  "<<equipos.equipos[z].golesFavor<<"  "<<equipos.equipos[z].golesEncontra<<"  "<<equipos.equipos[z].diferenciaDeGoles<< endl;
+            printf("%-30s%-35d\t%d\n", equiposOrden.equipos[z].nombre, equiposOrden.equipos[z].puntos,equiposOrden.equipos[z].partidosJugados);
     }
 
+
     }
+
     else{
         cout<< "No hay resultados."<< endl;
     }
 }
-
 
 void GuardarFixture(Fixture &fixture,Fixtures &fixtures){
 
