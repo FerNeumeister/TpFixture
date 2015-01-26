@@ -135,3 +135,24 @@
 	<fstream>
 	<stdlib.h>
 
+1420884635 source:c:\users\deli\desktop\tpfixture - copia\torneo.cpp
+	"torneo.h"
+	<cstdlib>
+	<math.h>
+	<string.h>
+	<time.h>
+	<ctime>
+
+1420884635 c:\users\deli\desktop\tpfixture - copia\torneo.h
+	<stdio.h>
+
+1422165187 source:c:\users\deli\desktop\tpfixture - copia\fixture\main.cpp
+	<iostream>
+	<cstdlib>
+	<ctime>
+	<stdio.h>
+	"../torneo.h"
+	<cstring>
+	<fstream>
+	<stdlib.h>
+

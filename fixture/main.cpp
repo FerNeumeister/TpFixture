@@ -480,7 +480,7 @@ void GuardarFixture(Fixture &fixture, Equipos equipos){
 
         if(fixture.fechas[i].laFechaFueJugada==true){
             cantidadFechas=cantidadFechas+suma;
-            cout<<"pelotudo"<<endl;
+            cout<<"prueba"<<endl;
         }
     }
 
