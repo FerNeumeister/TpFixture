@@ -1,0 +1,252 @@
+5
+10
+0
+4
+    Rosario Central
+    Quilmes A.C.
+
+3
+0
+    Arsenal F.C.
+    Vélez Sarsfield
+
+0
+0
+    Tigre
+    Independiente
+
+0
+0
+    Lanús
+    Olimpo (B. Blanca)
+
+0
+0
+    Godoy Cruz (Mza.)
+    N.O. Boys
+
+0
+0
+    Gimnasia y Esgrima L.P.
+    Banfield
+
+0
+5
+    Racing Club
+    Defensa y Justicia
+
+0
+0
+    At. de Rafaela
+    River Plate
+
+4
+0
+    Estudiantes L.P.
+    Boca Juniors
+
+0
+4
+    San Lorenzo de Almagro
+    Belgrano
+
+0
+0
+    Independiente
+    Arsenal F.C.
+
+0
+0
+    Olimpo (B. Blanca)
+    Rosario Central
+
+0
+0
+    Vélez Sarsfield
+    Quilmes A.C.
+
+0
+0
+    N.O. Boys
+    Tigre
+
+3
+0
+    Banfield
+    Lanús
+
+0
+0
+    Defensa y Justicia
+    Godoy Cruz (Mza.)
+
+0
+0
+    River Plate
+    Gimnasia y Esgrima L.P.
+
+4
+0
+    Boca Juniors
+    Racing Club
+
+0
+0
+    Belgrano
+    At. de Rafaela
+
+0
+0
+    San Lorenzo de Almagro
+    Estudiantes L.P.
+
+0
+0
+    Quilmes A.C.
+    Olimpo (B. Blanca)
+
+0
+4
+    Arsenal F.C.
+    N.O. Boys
+
+0
+0
+    Rosario Central
+    Banfield
+
+0
+4
+    Independiente
+    Vélez Sarsfield
+
+5
+0
+    Tigre
+    Defensa y Justicia
+
+0
+0
+    Lanús
+    River Plate
+
+3
+0
+    Godoy Cruz (Mza.)
+    Boca Juniors
+
+4
+0
+    Gimnasia y Esgrima L.P.
+    Belgrano
+
+0
+0
+    Racing Club
+    San Lorenzo de Almagro
+
+4
+0
+    At. de Rafaela
+    Estudiantes L.P.
+
+0
+0
+    N.O. Boys
+    Independiente
+
+0
+0
+    Banfield
+    Quilmes A.C.
+
+0
+0
+    Defensa y Justicia
+    Arsenal F.C.
+
+0
+0
+    River Plate
+    Rosario Central
+
+0
+0
+    Vélez Sarsfield
+    Olimpo (B. Blanca)
+
+0
+0
+    Boca Juniors
+    Tigre
+
+0
+0
+    Belgrano
+    Lanús
+
+0
+0
+    San Lorenzo de Almagro
+    Godoy Cruz (Mza.)
+
+0
+0
+    Estudiantes L.P.
+    Gimnasia y Esgrima L.P.
+
+4
+4
+    At. de Rafaela
+    Racing Club
+
+0
+0
+    Olimpo (B. Blanca)
+    Banfield
+
+0
+0
+    Independiente
+    Defensa y Justicia
+
+0
+6
+    Quilmes A.C.
+    River Plate
+
+0
+0
+    Arsenal F.C.
+    Boca Juniors
+
+0
+4
+    Rosario Central
+    Belgrano
+
+0
+3
+    N.O. Boys
+    Vélez Sarsfield
+
+0
+0
+    Tigre
+    San Lorenzo de Almagro
+
+0
+0
+    Lanús
+    Estudiantes L.P.
+
+3
+0
+    Godoy Cruz (Mza.)
+    At. de Rafaela
+
+0
+0
+    Gimnasia y Esgrima L.P.
+    Racing Club
+

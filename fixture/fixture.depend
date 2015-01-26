@@ -72,3 +72,66 @@
 	"../torneo.h"
 	<cstring>
 
+1420884635 source:c:\users\fer\tpfixture\torneo.cpp
+	"torneo.h"
+	<cstdlib>
+	<math.h>
+	<string.h>
+	<time.h>
+	<ctime>
+
+1420884635 c:\users\fer\tpfixture\torneo.h
+	<stdio.h>
+
+1420885219 source:c:\users\fer\tpfixture\fixture\main.cpp
+	<iostream>
+	<cstdlib>
+	<ctime>
+	<stdio.h>
+	"../torneo.h"
+	<cstring>
+	<fstream>
+	<stdlib.h>
+
+1420884635 source:c:\users\fer\documents\tpfixture\torneo.cpp
+	"torneo.h"
+	<cstdlib>
+	<math.h>
+	<string.h>
+	<time.h>
+	<ctime>
+
+1420884635 c:\users\fer\documents\tpfixture\torneo.h
+	<stdio.h>
+
+1422072197 source:c:\users\fer\documents\tpfixture\fixture\main.cpp
+	<iostream>
+	<cstdlib>
+	<ctime>
+	<stdio.h>
+	"../torneo.h"
+	<cstring>
+	<fstream>
+	<stdlib.h>
+
+1420884635 source:c:\users\deli\desktop\tpfixture\torneo.cpp
+	"torneo.h"
+	<cstdlib>
+	<math.h>
+	<string.h>
+	<time.h>
+	<ctime>
+
+1420884635 c:\users\deli\desktop\tpfixture\torneo.h
+	<stdio.h>
+
+1422164701 source:c:\users\deli\desktop\tpfixture\fixture\main.cpp
+	<iostream>
+	<cstdlib>
+	<ctime>
+	<stdio.h>
+	"../torneo.h"
+	<cstring>
+	<fstream>
+	<stdlib.h>
+
